@@ -103,7 +103,6 @@ namespace Class2
             Console.WriteLine(name);
 
             StringBuilder builder = new StringBuilder();
-            builder.Append(name);
             builder.Append("jason"); // jason
             builder.Append(" timothy"); // jason timothy
             builder.Append(" robert"); // jason timothy robert
