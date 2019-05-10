@@ -8,4 +8,12 @@ namespace Class14
     {
         void Brake();
     }
+
+    public class Bicycle : IBrake
+    {
+        public void Brake()
+        {
+
+        }
+    }
 }
