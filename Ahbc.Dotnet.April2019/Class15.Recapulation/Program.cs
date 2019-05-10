@@ -20,12 +20,14 @@ namespace Class15.Recapulation
             animal.SaySomething();
             dinosaur.SaySomething();
 
-            Animal sloth = new Sloth();
+            Sloth sloth = new Sloth();
             DoTheDeed(sloth);
             DoTheDeed(animal);
 
             sloth.DoSomething();
             dinosaur.DoSomething();
+
+            sloth.InAFunction();
         }
 
         public static void DoTheDeed(Animal animal)
