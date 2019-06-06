@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class15.Files", "Class15.Fi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class15.Recapulation", "Class15.Recapulation\Class15.Recapulation.csproj", "{A682E92D-5944-45EE-AEEE-93B6B1919C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class25", "Class25\Class25.csproj", "{AB9DE256-EBCF-4FB4-8494-E49D8B12C319}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Class25", "Class25\Class25.csproj", "{AB9DE256-EBCF-4FB4-8494-E49D8B12C319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Class26", "Class26\Class26.csproj", "{BC57F8EB-CD7E-4EBC-9FF8-427F6568CDFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{AB9DE256-EBCF-4FB4-8494-E49D8B12C319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB9DE256-EBCF-4FB4-8494-E49D8B12C319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB9DE256-EBCF-4FB4-8494-E49D8B12C319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC57F8EB-CD7E-4EBC-9FF8-427F6568CDFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC57F8EB-CD7E-4EBC-9FF8-427F6568CDFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC57F8EB-CD7E-4EBC-9FF8-427F6568CDFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC57F8EB-CD7E-4EBC-9FF8-427F6568CDFA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
