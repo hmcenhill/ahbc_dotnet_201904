@@ -1,0 +1,11 @@
+﻿@model PrivacyViewModel
+
+@*<h1>@ViewData["Title"]</h1>*@
+<h1>@ViewBag.Title</h1>
+
+@*@if ((bool)ViewData["Display"])*@
+@if(ViewBag.Display)
+{
+    <p>As of @Model.AsOf.ToShortDateString()</p>
+    <p>@Model.PolicyVerbiage</p>
+}
