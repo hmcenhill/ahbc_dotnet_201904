@@ -26,6 +26,11 @@ namespace SomethingCool.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Employee employee)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(employee);
+            }
+
             _repository.Save(id, employee);
 
             return RedirectToAction("Index", "Home");
