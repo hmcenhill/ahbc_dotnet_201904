@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SomethingCool.Data;
 
 namespace SomethingCool
 {
@@ -31,6 +32,8 @@ namespace SomethingCool
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddSingleton<IDataRepository, DataRepository>();
+            services.AddTransient<IConnectionStringManager, ConnectionStringManager>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

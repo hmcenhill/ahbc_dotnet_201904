@@ -4,8 +4,13 @@ using System.Linq;
 
 namespace SomethingCool.Data
 {
-    public class DataRepository
+    public class DataRepository : IDataRepository
     {
+        public DataRepository(IConnectionStringManager connectionStringManager)
+        {
+            _connectionStringManager = connectionStringManager;
+        }
+
         private readonly Dictionary<int, Employee> _data =
             new Dictionary<int, Employee>
             {
@@ -18,6 +23,7 @@ namespace SomethingCool.Data
                         Email = "jason@grandcircus.co"
                     }}
             };
+        private readonly IConnectionStringManager _connectionStringManager;
 
         public Employee Get(int id)
         {

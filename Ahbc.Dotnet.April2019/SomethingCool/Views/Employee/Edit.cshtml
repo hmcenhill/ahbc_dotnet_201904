@@ -5,7 +5,7 @@
 
 <h1>Edit</h1>
 
-<form asp-controller="Employee" asp-action="Edit" method="post">
+<form asp-controller="Employee" asp-action="Edit" asp-route-id="@Model.Id" method="post">
     <div class="form-group">
         <div>
             <label asp-for="FirstName">First Name</label>
