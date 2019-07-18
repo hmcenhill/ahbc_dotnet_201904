@@ -10,7 +10,12 @@ namespace SomethingCool.Controllers
 {
     public class EmployeeController : Controller
     {
-        private static DataRepository _repository = new DataRepository();
+        private readonly IDataRepository _repository;
+
+        public EmployeeController(IDataRepository repository)
+        {
+            _repository = repository;
+        }
 
         public IActionResult Index()
         {

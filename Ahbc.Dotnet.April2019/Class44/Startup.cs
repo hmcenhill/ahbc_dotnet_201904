@@ -9,9 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SomethingCool.Data;
 
-namespace SomethingCool
+namespace Class44
 {
     public class Startup
     {
@@ -32,9 +31,13 @@ namespace SomethingCool
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddSingleton<IDataRepository, DataRepository>();
-            services.AddTransient<IConnectionStringManager, ConnectionStringManager>();
-
+            services.AddSession(options => {
+                options.Cookie.Name = ".GrandCircus.Example";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -55,7 +58,7 @@ namespace SomethingCool
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
