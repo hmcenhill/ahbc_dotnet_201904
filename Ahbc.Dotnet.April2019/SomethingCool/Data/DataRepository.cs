@@ -1,49 +1,34 @@
 ﻿using SomethingCool.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace SomethingCool.Data
 {
     public class DataRepository : IDataRepository
     {
-        public DataRepository(IConnectionStringManager connectionStringManager)
-        {
-            _connectionStringManager = connectionStringManager;
-        }
+        private readonly EmployeeContext _context;
 
-        private readonly Dictionary<int, Employee> _data =
-            new Dictionary<int, Employee>
-            {
-                { 5, new Employee
-                    {
-                        Id = 5,
-                        FirstName = "Jason",
-                        LastName = "Robert",
-                        Age = 35,
-                        Email = "jason@grandcircus.co"
-                    }}
-            };
-        private readonly IConnectionStringManager _connectionStringManager;
+        public DataRepository(EmployeeContext context)
+        {
+            _context = context;
+        }
 
         public Employee Get(int id)
         {
-            if (_data.TryGetValue(id, out var employee))
-            {
-                return employee;
-            }
-
-            return null;
+            return _context.Employees.Find(id);
         }
 
         public void Add(Employee employee)
         {
-            var id = _data.Keys.Max() + 1;
-            _data[id] = employee;
+            _context.Employees.Add(employee);
+            _context.SaveChanges();
         }
 
         public void Save(int id, Employee employee)
         {
-            _data[id] = employee;
+            if (id == employee.Id)
+            {
+                _context.Update(employee);
+                _context.SaveChanges();
+            }
         }
     }
 }

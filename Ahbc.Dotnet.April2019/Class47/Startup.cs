@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Class47.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,9 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SomethingCool.Data;
 
-namespace SomethingCool
+namespace Class47
 {
     public class Startup
     {
@@ -33,12 +33,10 @@ namespace SomethingCool
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<EmployeeContext>(options =>
+            services.AddDbContext<ClassroomContext>(options =>
             {
-                options.UseSqlServer("Server=localhost;Database=SomethingCool;Trusted_Connection=true;");
+                options.UseSqlServer("Server=localhost;Database=Classroom;Trusted_Connection=True;");
             });
-
-            services.AddTransient<IDataRepository, DataRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
