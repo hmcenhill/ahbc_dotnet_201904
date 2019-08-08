@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Class52.Data;
@@ -29,12 +27,12 @@ namespace Class52.Controllers
         }
 
         // GET: api/Employees/5
-        [HttpGet("{id}", Name = "GetEmployee")]
-        public async Task<ActionResult<Employee>> GetEmployee(int id)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Employee>> GetEmployee(int id, bool includeName)
         {
-            var employee = await _context.Employees
-                .Include(x => x.Name)
-                .FirstOrDefaultAsync(x => x.EmployeeId == id);
+            var employee = includeName
+                ? await _context.Employees.Include(x => x.Name).FirstOrDefaultAsync(x => x.EmployeeId == id)
+                : await _context.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
             
             if (employee == null)
             {
@@ -98,6 +96,15 @@ namespace Class52.Controllers
             await _context.SaveChangesAsync();
 
             return employee;
+        }
+
+        // DELETE: api/Employees
+        [HttpDelete]
+        public async Task<IActionResult> DeleteEmployees()
+        {
+            _context.Employees.RemoveRange(_context.Employees);
+            await _context.SaveChangesAsync();
+            return Ok();
         }
 
         private bool EmployeeExists(int id)
